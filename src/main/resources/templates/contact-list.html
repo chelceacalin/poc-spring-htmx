@@ -3,33 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <title>Title</title>
-      <link rel="stylesheet" href="contact-list.css">
-      <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="contact-list.css" />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.6"
+      integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body>
+  <body class="body">
+    {{>navbar}}
 
-    <h2>Contact List</h2>
+    <div class="fragment" id="fragment">
+      <h2>Contact List</h2>
 
-    <a href="/add-contact" class="button">Add</a>
-
-    <table cellpadding="1" cellspacing="1">
-      <tr>
-        <th>Nume</th>
-        <th>Prenume</th>
-        <th>Data Nasterii</th>
-           <th>Actions</th>
-      </tr>
-      {{#contacts}}
-      <tr>
-        <td>{{nume}}</td>
-        <td>{{prenume}}</td>
-        <td>{{dataNasterii}}</td>
-        <td>
-          <a href="/edit-contact/{{id}}"
-          >Edit</a>
-        </td>
-      </tr>
-      {{/contacts}}
-    </table>
+      <button class="button"
+      hx-get="/add-contact"
+      hx-swap="outerHTML"
+      hx-target="#fragment"
+      hx-trigger="click"
+      >Add</button>
+      <table cellpadding="1" cellspacing="1" id="table">
+        <tr>
+          <th>Nume</th>
+          <th>Prenume</th>
+          <th>Data Nasterii</th>
+          <th>Actions</th>
+        </tr>
+        {{#contacts}}
+        <tr>
+          <td>{{nume}}</td>
+          <td>{{prenume}}</td>
+          <td>{{dataNasterii}}</td>
+          <td>
+            <a
+              href="#"
+              hx-trigger="click"
+              hx-get="/edit-contact/{{id}}"
+              hx-swap="outerHTML"
+              hx-target="#fragment"
+              >Edit</a
+            >
+          </td>
+        </tr>
+        {{/contacts}}
+      </table>
+    </div>
   </body>
 </html>

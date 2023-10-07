@@ -1,42 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Add Contact</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+    <script
+      src="https://unpkg.com/htmx.org@1.9.6"
+      integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="form-container" id="formContainer">
+      <form >
+        <input type="text" name="nume" placeholder="Nume" /><br />
+        <input type="text" name="prenume" placeholder="Prenume" /><br />
+        <input type="date" name="dataNasterii" /><br />
+        <button
+          hx-post="/add-contact"
+          hx-trigger="click"
+          hx-swap="outerHTML"
+          hx-target="#formContainer"
+        >
+          Save
+        </button>
+      </form>
+      <button
+        hx-trigger="click"
+        hx-get="/"
+        hx-swap="outerHTML"
+        hx-target="#formContainer"
+      >
+        Cancel
+      </button>
+    </div>
+  </body>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-        .form-container {
-            text-align: center;
-            background-color: seashell;
-            padding: 20px 12px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            border-radius: 10px;
-        }
+    .form-container {
+      text-align: center;
+      background-color: seashell;
+      padding: 20px 12px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius: 10px;
+    }
 
-        .form-container input, .form-container button {
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-<div class="form-container">
-    <form method="POST" action="/add-contact">
-        <input type="text" name="nume" placeholder="Nume"><br>
-        <input type="text" name="prenume" placeholder="Prenume"><br>
-        <input type="date" name="dataNasterii"><br>
-        <button type="submit">Save</button>
-    </form>
-    <button><a href="/">Cancel</a></button>
-</div>
-</body>
+    .form-container input,
+    .form-container button {
+      margin-bottom: 10px;
+    }
+  </style>
 </html>

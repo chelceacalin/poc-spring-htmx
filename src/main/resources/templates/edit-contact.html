@@ -6,15 +6,25 @@
     <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="form-container">
-    <form method="POST" action="/update-contact">
+<div class="form-container" id="formContainer">
+    <form >
         <input type="text" value="{{contact.id}}" name="id" hidden="hidden">
         <input type="text" value="{{contact.nume}}" name="nume"><br>
         <input type="text" value="{{contact.prenume}}" name="prenume"><br>
         <input type="date" value="{{contact.dataNasterii}}" name="dataNasterii"><br>
-        <button type="submit">Save</button>
+        <button
+        hx-post="/update-contact"
+        hx-trigger="click"
+        hx-swap="outerHTML"
+        hx-target="#formContainer"
+        >Save</button>
     </form>
-   <button><a href="/">Cancel</a></button>
+    <button
+            hx-get="/"
+            hx-trigger="click"
+            hx-swap="outerHTML"
+            hx-target="#formContainer"
+    >Cancel</button>
 </div>
 </body>
 

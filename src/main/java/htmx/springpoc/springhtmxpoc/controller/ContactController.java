@@ -24,17 +24,15 @@ public class ContactController {
         return "contact-list";
     }
 
-
     @GetMapping("/edit-contact/{id}")
     public String editContactPage(@PathVariable(name="id") UUID id, Model model) {
         Optional<Contact> optionalContact = contactRepository.findById(id);
         if (optionalContact.isPresent()) {
-            System.out.println(optionalContact.get());
             Contact contact = optionalContact.get();
             model.addAttribute("contact", contact);
             return "edit-contact";
         } else {
-            model.addAttribute("contactid",id);
+            model.addAttribute("contactid", id);
             return "contact-not-found";
         }
     }
@@ -45,7 +43,8 @@ public class ContactController {
         contactRepository.save(contact);
         model.addAttribute("contact",contact);
         System.out.println(contact);
-        return "redirect:/edit-contact/"+ contact.getId();
+//        return "redirect:/edit-contact/"+ contact.getId();
+        return "redirect:/";
     }
 
 
