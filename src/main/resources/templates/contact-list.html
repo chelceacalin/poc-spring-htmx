@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+      <link rel="stylesheet" href="contact-list.css">
+      <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <h2>Contact List</h2>
+
+    <a href="/add-contact" class="button">Add</a>
+
+    <table cellpadding="1" cellspacing="1">
+      <tr>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Data Nasterii</th>
+           <th>Actions</th>
+      </tr>
+      {{#contacts}}
+      <tr>
+        <td>{{nume}}</td>
+        <td>{{prenume}}</td>
+        <td>{{dataNasterii}}</td>
+        <td>
+          <a href="/edit-contact/{{id}}"
+          >Edit</a>
+        </td>
+      </tr>
+      {{/contacts}}
+    </table>
+  </body>
+</html>

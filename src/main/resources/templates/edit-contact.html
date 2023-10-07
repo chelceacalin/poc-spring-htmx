@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="form-container">
+    <form method="POST" action="/update-contact">
+        <input type="text" value="{{contact.id}}" name="id" hidden="hidden">
+        <input type="text" value="{{contact.nume}}" name="nume"><br>
+        <input type="text" value="{{contact.prenume}}" name="prenume"><br>
+        <input type="date" value="{{contact.dataNasterii}}" name="dataNasterii"><br>
+        <button type="submit">Save</button>
+    </form>
+   <button><a href="/">Cancel</a></button>
+</div>
+</body>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .form-container {
+        text-align: center;
+        background-color: seashell;
+        padding:20px 12px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 10px;
+    }
+    .form-container input, .form-container button {
+        margin-bottom: 10px;
+    }
+
+</style>
+</html>
